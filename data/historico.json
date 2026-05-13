@@ -1,0 +1,93 @@
+[
+    {
+        "id": "8f3f973d-def7-45b4-bc7c-a03e3f96f7a1",
+        "data_consulta": "13/05/2026 01:30",
+        "razao_social": "AMAZON SERVICOS DE VAREJO DO BRASIL LTDA.",
+        "cnpj": "15436940000103",
+        "situacao": "ATIVA",
+        "cnae": "Comércio varejista de livros",
+        "municipio": "SAO PAULO",
+        "uf": "SP",
+        "risco": "BAIXO",
+        "fonte": "BrasilAPI",
+        "link": "https://brasilapi.com.br/api/cnpj/v1/15436940000103"
+    },
+    {
+        "id": "232b5593-204c-4778-8062-f1b2ff62641d",
+        "data_consulta": "13/05/2026 01:30",
+        "razao_social": "CAIXA ECONOMICA FEDERAL",
+        "cnpj": "00360305000104",
+        "situacao": "ATIVA",
+        "cnae": "Caixas econômicas",
+        "municipio": "BRASILIA",
+        "uf": "DF",
+        "risco": "BAIXO",
+        "fonte": "BrasilAPI",
+        "link": "https://brasilapi.com.br/api/cnpj/v1/00360305000104"
+    },
+    {
+        "id": "2a497df2-138d-4ede-bf6a-3fd6ab255603",
+        "data_consulta": "13/05/2026 01:31",
+        "razao_social": "OPENAI BRAZIL LIMITADA",
+        "cnpj": "62531071000178",
+        "situacao": "ATIVA",
+        "cnae": "Portais, provedores de conteúdo e outros serviços de informação na internet",
+        "municipio": "SAO PAULO",
+        "uf": "SP",
+        "risco": "BAIXO",
+        "fonte": "BrasilAPI",
+        "link": "https://brasilapi.com.br/api/cnpj/v1/62531071000178"
+    },
+    {
+        "id": "f4ff881e-a4e6-41f4-b254-7f52d3fe8beb",
+        "data_consulta": "13/05/2026 01:31",
+        "razao_social": "ABACATEPAY TECNOLOGIA LTDA",
+        "cnpj": "58271413000190",
+        "situacao": "ATIVA",
+        "cnae": "Atividades de intermediação e agenciamento de serviços e negócios em geral, exceto imobiliários",
+        "municipio": "OURINHOS",
+        "uf": "SP",
+        "risco": "MÉDIO",
+        "fonte": "BrasilAPI",
+        "link": "https://brasilapi.com.br/api/cnpj/v1/58271413000190"
+    },
+    {
+        "id": "e9063cd7-e1d2-4d5e-9dbc-4dba1db7aa0c",
+        "data_consulta": "13/05/2026 01:31",
+        "razao_social": "OPENAI BRAZIL LIMITADA",
+        "cnpj": "62531071000178",
+        "situacao": "ATIVA",
+        "cnae": "Portais, provedores de conteúdo e outros serviços de informação na internet",
+        "municipio": "SAO PAULO",
+        "uf": "SP",
+        "risco": "BAIXO",
+        "fonte": "BrasilAPI",
+        "link": "https://brasilapi.com.br/api/cnpj/v1/62531071000178"
+    },
+    {
+        "id": "71a407bb-8be3-4ba3-bdb4-47fcbe659a88",
+        "data_consulta": "13/05/2026 01:32",
+        "razao_social": "ORACLE DO BRASIL SISTEMAS LTDA",
+        "cnpj": "59456277000176",
+        "situacao": "ATIVA",
+        "cnae": "Suporte técnico, manutenção e outros serviços em tecnologia da informação",
+        "municipio": "SAO PAULO",
+        "uf": "SP",
+        "risco": "BAIXO",
+        "fonte": "BrasilAPI",
+        "link": "https://brasilapi.com.br/api/cnpj/v1/59456277000176"
+    },
+    {
+        "id": "3aaa94ab-5ea7-438d-9c1f-04e858183d1b",
+        "data_consulta": "13/05/2026 01:32",
+        "razao_social": "ORACLE DO BRASIL SISTEMAS LTDA",
+        "cnpj": "59456277000176",
+        "situacao": "ATIVA",
+        "cnae": "Suporte técnico, manutenção e outros serviços em tecnologia da informação",
+        "municipio": "SAO PAULO",
+        "uf": "SP",
+        "risco": "BAIXO",
+        "fonte": "BrasilAPI",
+        "link": "https://brasilapi.com.br/api/cnpj/v1/59456277000176"
+    }
+]

@@ -1,0 +1,513 @@
+/* =========================================
+   ROOT COLORS
+========================================= */
+
+:root {
+
+    --primary: #00132e;
+    --primary-light: #0b234f;
+    --secondary: #12366f;
+    --accent: #2b5db8;
+
+    --success: #198754;
+    --warning: #ffc107;
+    --danger: #dc3545;
+
+    --background: #f4f7fb;
+
+    --text: #1e293b;
+
+}
+
+/* =========================================
+   GLOBAL
+========================================= */
+
+body {
+
+    background: var(--background);
+
+    font-family: "Inter", sans-serif;
+
+    color: var(--text);
+
+}
+
+.container {
+
+    max-width: 1200px;
+
+}
+
+/* =========================================
+   CARDS
+========================================= */
+
+.main-card,
+.card {
+
+    border: none;
+
+    border-radius: 20px;
+
+}
+
+.shadow-custom {
+
+    box-shadow:
+        0 10px 25px rgba(0, 19, 46, 0.08);
+
+}
+
+/* =========================================
+   TITLES
+========================================= */
+
+.title {
+
+    color: var(--primary);
+
+    font-weight: 700;
+
+}
+
+.company-title {
+
+    font-size: 1.6rem;
+
+    font-weight: 700;
+
+    color: var(--primary);
+
+}
+
+.section-title {
+
+    color: var(--primary);
+
+    font-weight: 600;
+
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.btn-primary {
+
+    background: var(--primary);
+
+    border: none;
+
+}
+
+.btn-primary:hover {
+
+    background: var(--primary-light);
+
+}
+
+.btn-outline-primary {
+
+    border-color: var(--primary);
+
+    color: var(--primary);
+
+}
+
+.btn-outline-primary:hover {
+
+    background: var(--primary);
+
+    color: white;
+
+}
+
+/* =========================================
+   INPUTS
+========================================= */
+
+.form-control,
+.form-select {
+
+    border-radius: 12px;
+
+    min-height: 48px;
+
+    border: 1px solid #dbe3ef;
+
+}
+
+.form-control:focus,
+.form-select:focus {
+
+    border-color: var(--accent);
+
+    box-shadow:
+        0 0 0 0.2rem rgba(43, 93, 184, 0.15);
+
+}
+
+/* =========================================
+   BADGES
+========================================= */
+
+.badge {
+
+    padding: 10px 14px;
+
+    font-size: 0.85rem;
+
+}
+
+/* =========================================
+   TABLE
+========================================= */
+
+.table {
+
+    vertical-align: middle;
+
+}
+
+.table th {
+
+    color: var(--primary);
+
+}
+
+.history-row {
+
+    transition: 0.2s ease;
+
+}
+
+.history-row:hover {
+
+    background: rgba(18, 54, 111, 0.08);
+
+}
+
+/* =========================================
+   SCROLL
+========================================= */
+
+.mobile-scroll {
+
+    overflow-x: auto;
+
+}
+
+/* =========================================
+   MOBILE HISTORY WRAPPER
+========================================= */
+
+.mobile-history-wrapper {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding: 4px 20px 14px 20px; 
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+
+    margin-left: -14px;
+    margin-right: -14px;
+}
+
+.mobile-history-wrapper::-webkit-scrollbar {
+
+    height: 6px;
+
+}
+
+.mobile-history-wrapper::-webkit-scrollbar-thumb {
+
+    background: #12366f;
+
+    border-radius: 999px;
+
+}
+
+/* =========================================
+   MOBILE HISTORY CARD
+========================================= */
+
+.mobile-history-card {
+
+    flex: 0 0 78vw;   /* ← menor que 100vw pra aparecer o próximo card */
+    min-width: 78vw;
+    max-width: 78vw;
+
+    background: #ffffff;
+
+    border-radius: 22px;
+
+    padding: 18px;
+
+    border: 1px solid #e2e8f0;
+
+    box-shadow:
+        0 8px 24px rgba(15, 23, 42, 0.08);
+
+    scroll-snap-align: start;
+
+    display: flex;
+
+    flex-direction: column;
+
+    box-sizing: border-box;
+
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.mobile-card-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 18px;
+
+}
+
+.mobile-checkbox-wrapper {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 0.9rem;
+
+    font-weight: 500;
+
+    color: #475569;
+
+}
+
+/* =========================================
+   EMPRESA
+========================================= */
+
+.mobile-company-block {
+
+    margin-bottom: 18px;
+
+}
+
+/* EMPRESA */
+.mobile-company-name {
+
+    font-size: 1.15rem;
+
+    font-weight: 800;
+
+    line-height: 1.35;
+
+    color: #00132e;
+
+    margin-bottom: 6px;
+
+}
+
+/* CNPJ */
+.mobile-cnpj {
+
+    font-size: 0.9rem;
+
+    color: #64748b;
+
+    margin-bottom: 14px;
+
+}
+
+
+
+/* =========================================
+   INFO BOX
+========================================= */
+
+/* BOXES */
+.mobile-info-box {
+
+    background: #f8fafc;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 14px;
+
+    padding: 14px;
+
+    margin-bottom: 12px;
+
+}
+
+/* LABEL */
+.mobile-label {
+
+    font-size: 0.72rem;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    color: #64748b;
+
+    margin-bottom: 8px;
+
+}
+
+/* VALUE */
+.mobile-value {
+
+    font-size: 0.96rem;
+
+    color: #0f172a;
+
+    line-height: 1.5;
+
+}
+
+/* BOTÃO */
+.mobile-history-card .btn {
+
+    margin-top: 10px;
+
+    min-height: 48px;
+
+    border-radius: 14px;
+
+    font-weight: 700;
+
+}
+
+
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .container {
+
+        padding-left: 14px;
+
+        padding-right: 14px;
+
+    }
+
+    .card {
+
+        border-radius: 16px;
+
+    }
+
+    .company-title {
+
+        font-size: 1.2rem;
+
+    }
+
+    .badge {
+
+        margin-top: 10px;
+
+    }
+
+    .d-flex-mobile {
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: flex-start !important;
+
+    }
+
+    .table {
+
+        font-size: 0.9rem;
+
+    }
+
+    .btn {
+
+        min-height: 46px;
+
+    }
+
+    .mobile-stack {
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 12px;
+
+    }
+
+    .mobile-history-card {
+
+        min-width: 78vw;
+        max-width: 78vw;
+
+    }
+
+}
+
+/* =========================================
+   SMOOTH SCROLL
+========================================= */
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+/* =========================================
+   EXPORTAR EXCEL
+========================================= */
+.export-btn {
+
+    background: #198754;
+
+    border: none;
+
+    border-radius: 12px;
+
+    padding:
+        10px 18px;
+
+    font-weight: 600;
+
+    transition: 0.2s ease;
+
+}
+
+.export-btn:hover {
+
+    background: #157347;
+
+    transform: translateY(-1px);
+
+}
+
+@media (max-width: 768px) {
+
+    .export-btn {
+
+        width: 100%;
+
+    }
+
+}

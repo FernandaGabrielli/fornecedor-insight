@@ -1,0 +1,90 @@
+[
+    {
+        "id": "0043339c-c4c6-4ce3-a6ea-37ebb280ac99",
+        "data_consulta": "13/05/2026 01:17",
+        "razao_social": "AMAZON SERVICOS DE VAREJO DO BRASIL LTDA.",
+        "cnpj": "15436940000103",
+        "situacao": "ATIVA",
+        "cnae": "Comércio varejista de livros",
+        "municipio": "SAO PAULO",
+        "uf": "SP",
+        "risco": "BAIXO"
+    },
+    {
+        "id": "23f0b144-405a-469a-a82b-c024d5948549",
+        "data_consulta": "13/05/2026 01:17",
+        "razao_social": "CAIXA ECONOMICA FEDERAL",
+        "cnpj": "00360305000104",
+        "situacao": "ATIVA",
+        "cnae": "Caixas econômicas",
+        "municipio": "BRASILIA",
+        "uf": "DF",
+        "risco": "BAIXO"
+    },
+    {
+        "id": "7dff50b3-943b-4014-89ff-7bcfbb461bcf",
+        "data_consulta": "13/05/2026 01:18",
+        "razao_social": "ABACATEPAY TECNOLOGIA LTDA",
+        "cnpj": "58271413000190",
+        "situacao": "ATIVA",
+        "cnae": "Atividades de intermediação e agenciamento de serviços e negócios em geral, exceto imobiliários",
+        "municipio": "OURINHOS",
+        "uf": "SP",
+        "risco": "MÉDIO"
+    },
+    {
+        "id": "04324a11-22c1-4723-aebb-17cbf3cb6465",
+        "data_consulta": "13/05/2026 01:18",
+        "razao_social": "OPENAI BRAZIL LIMITADA",
+        "cnpj": "62531071000178",
+        "situacao": "ATIVA",
+        "cnae": "Portais, provedores de conteúdo e outros serviços de informação na internet",
+        "municipio": "SAO PAULO",
+        "uf": "SP",
+        "risco": "BAIXO"
+    },
+    {
+        "id": "449bc020-b6f9-4be3-9eed-4661a43bbeb4",
+        "data_consulta": "13/05/2026 01:19",
+        "razao_social": "JEP SERVICOS ADMINISTRATIVOS LTDA",
+        "cnpj": "30453318000199",
+        "situacao": "BAIXADA",
+        "cnae": "Serviços combinados de escritório e apoio administrativo",
+        "municipio": "RECIFE",
+        "uf": "PE",
+        "risco": "ALTO"
+    },
+    {
+        "id": "e9e8681b-2a42-4b26-82d1-e9930c5660ba",
+        "data_consulta": "13/05/2026 01:19",
+        "razao_social": "NU PAGAMENTOS S.A. - INSTITUICAO DE PAGAMENTO",
+        "cnpj": "18236120000158",
+        "situacao": "ATIVA",
+        "cnae": "Outras atividades auxiliares dos serviços financeiros não especificadas anteriormente",
+        "municipio": "SAO PAULO",
+        "uf": "SP",
+        "risco": "BAIXO"
+    },
+    {
+        "id": "288b8fb4-4c5c-4ddb-b00d-9e034f2a00c0",
+        "data_consulta": "13/05/2026 01:20",
+        "razao_social": "NU PAGAMENTOS S.A. - INSTITUICAO DE PAGAMENTO",
+        "cnpj": "18236120000158",
+        "situacao": "ATIVA",
+        "cnae": "Outras atividades auxiliares dos serviços financeiros não especificadas anteriormente",
+        "municipio": "SAO PAULO",
+        "uf": "SP",
+        "risco": "BAIXO"
+    },
+    {
+        "id": "63430fbb-971b-453a-a488-40568abbd8d3",
+        "data_consulta": "13/05/2026 01:20",
+        "razao_social": "NU PAGAMENTOS S.A. - INSTITUICAO DE PAGAMENTO",
+        "cnpj": "18236120000158",
+        "situacao": "ATIVA",
+        "cnae": "Outras atividades auxiliares dos serviços financeiros não especificadas anteriormente",
+        "municipio": "SAO PAULO",
+        "uf": "SP",
+        "risco": "BAIXO"
+    }
+]
