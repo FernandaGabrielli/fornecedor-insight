@@ -32,13 +32,13 @@ from services.history_manager import (
 app = Flask(__name__)
 
 
-@app.route('/', methods=['GET', 'POST'])
-def home():
+# ==========================================
+# HELPER: CARREGAR E ORDENAR HISTÓRICO
+# ==========================================
 
-    empresa = None
+def carregar_historico_ordenado():
 
     historico = carregar_historico()
-
 
     historico.sort(
         key=lambda item: datetime.strptime(
@@ -48,7 +48,19 @@ def home():
         reverse=True
     )
 
+    return historico
+
+
+# ==========================================
+# ROTA PRINCIPAL
+# ==========================================
+
+@app.route('/', methods=['GET', 'POST'])
+def home():
+
+    empresa = None
     erro = None
+    historico = carregar_historico_ordenado()
 
     if request.method == 'POST':
 
@@ -65,7 +77,7 @@ def home():
 
             salvar_historico(empresa)
 
-            historico = carregar_historico()
+            historico = carregar_historico_ordenado()
 
         else:
 
@@ -83,7 +95,7 @@ def home():
 
 
 # ==========================================
-# EXPORTAR XLSX
+# EXPORTAR XLSX DE UMA EMPRESA
 # ==========================================
 
 @app.route('/exportar/<cnpj>')
@@ -96,7 +108,6 @@ def exportar(cnpj):
     empresa = buscar_empresas(cnpj)
 
     if not empresa:
-
         return "Empresa não encontrada."
 
     # Calcula risco
@@ -107,17 +118,15 @@ def exportar(cnpj):
     # ==========================================
 
     dados_empresa = {
-
-        "Razão Social": [empresa.get("razao_social")],
-        "CNPJ": [empresa.get("cnpj")],
+        "Razão Social":  [empresa.get("razao_social")],
+        "CNPJ":          [empresa.get("cnpj")],
         "Nome Fantasia": [empresa.get("nome_fantasia")],
-        "Situação": [empresa.get("descricao_situacao_cadastral")],
-        "Cidade": [empresa.get("municipio")],
-        "UF": [empresa.get("uf")],
-        "CNAE": [empresa.get("cnae_fiscal_descricao")],
-        "Capital Social": [empresa.get("capital_social")],
-        "Risco": [empresa.get("risco")]
-
+        "Situação":      [empresa.get("descricao_situacao_cadastral")],
+        "Cidade":        [empresa.get("municipio")],
+        "UF":            [empresa.get("uf")],
+        "CNAE":          [empresa.get("cnae_fiscal_descricao")],
+        "Capital Social":[empresa.get("capital_social")],
+        "Risco":         [empresa.get("risco")]
     }
 
     df_empresa = pd.DataFrame(dados_empresa)
@@ -133,10 +142,8 @@ def exportar(cnpj):
     for socio in socios:
 
         lista_socios.append({
-
             "Nome": socio.get("nome_socio"),
             "Qualificação": socio.get("qualificacao_socio")
-
         })
 
     df_socios = pd.DataFrame(lista_socios)
@@ -145,51 +152,32 @@ def exportar(cnpj):
     # NOME DO ARQUIVO
     # ==========================================
 
-    nome_empresa = empresa.get(
-        "razao_social",
-        "empresa"
-    )
+    nome_empresa = empresa.get("razao_social", "empresa")
 
     # Remove acentos
     nome_empresa = unicodedata.normalize(
-        "NFKD",
-        nome_empresa
-    ).encode(
-        "ascii",
-        "ignore"
-    ).decode(
-        "utf-8"
-    )
+        "NFKD", nome_empresa
+    ).encode("ascii", "ignore").decode("utf-8")
 
     # Remove caracteres inválidos
-    nome_empresa = re.sub(
-        r'[^a-zA-Z0-9\s_-]',
-        '',
-        nome_empresa
-    )
+    nome_empresa = re.sub(r'[^a-zA-Z0-9\s_-]', '', nome_empresa)
 
     # Troca espaços por underline
-    nome_empresa = nome_empresa.replace(
-        " ",
-        "_"
-    )
+    nome_empresa = nome_empresa.replace(" ", "_")
 
     # Evita nomes gigantes
     nome_empresa = nome_empresa[:60]
 
     # Nome final
-    nome_arquivo = (
-        f"{nome_empresa}.xlsx"
-    )
+    nome_arquivo = f"{nome_empresa}.xlsx"
 
     # ==========================================
-    # CRIA XLSX
+    # CRIA XLSX EM MEMÓRIA
     # ==========================================
 
-    with pd.ExcelWriter(
-        nome_arquivo,
-        engine="openpyxl"
-    ) as writer:
+    output = BytesIO()
+
+    with pd.ExcelWriter(output, engine="openpyxl") as writer:
 
         df_empresa.to_excel(
             writer,
@@ -203,37 +191,44 @@ def exportar(cnpj):
             index=False
         )
 
+    output.seek(0)
+
     # ==========================================
     # DOWNLOAD
     # ==========================================
 
     return send_file(
-        nome_arquivo,
-        as_attachment=True
+        output,
+        as_attachment=True,
+        download_name=nome_arquivo,
+        mimetype=(
+            'application/vnd.openxmlformats-officedocument.'
+            'spreadsheetml.sheet'
+        )
     )
+
+
+# ==========================================
+# EXPORTAR XLSX DO HISTÓRICO
+# ==========================================
 
 @app.route('/exportar-historico')
 def exportar_historico():
 
+    # Carrega histórico ordenado
+    historico = carregar_historico_ordenado()
 
-
-    # Carrega histórico
-    historico = carregar_historico()
-
-    # Captura índices selecionados
+    # Captura IDs selecionados
     indices = request.args.get("indices")
 
-    # Se tiver índices selecionados
+    # Se tiver IDs selecionados, filtra
     if indices:
 
-        lista_indices = [
-            int(i)
-            for i in indices.split(",")
-        ]
+        lista_ids = indices.split(",")
 
         historico = [
-            historico[i]
-            for i in lista_indices
+            item for item in historico
+            if item.get("id") in lista_ids
         ]
 
     # Dados iguais da tabela HTML
@@ -242,21 +237,12 @@ def exportar_historico():
     for item in historico:
 
         dados.append({
-
-            "Data": item.get("data_consulta"),
-
+            "Data":    item.get("data_consulta"),
             "Empresa": item.get("razao_social"),
-
-            "CNPJ": item.get("cnpj"),
-
-            "Resumo":
-                f"{item.get('situacao')} - "
-                f"{item.get('cnae')}",
-
-            "Fonte": item.get("fonte"),
-
-            "Link": item.get("link")
-
+            "CNPJ":    item.get("cnpj"),
+            "Resumo":  f"{item.get('situacao')} - {item.get('cnae')}",
+            "Fonte":   item.get("fonte"),
+            "Link":    item.get("link")
         })
 
     # Cria DataFrame
@@ -266,10 +252,7 @@ def exportar_historico():
     output = BytesIO()
 
     # Exporta XLSX
-    with pd.ExcelWriter(
-        output,
-        engine='openpyxl'
-    ) as writer:
+    with pd.ExcelWriter(output, engine='openpyxl') as writer:
 
         df.to_excel(
             writer,
@@ -280,21 +263,19 @@ def exportar_historico():
     output.seek(0)
 
     return send_file(
-
         output,
-
         as_attachment=True,
-
         download_name='historico_consultas.xlsx',
-
         mimetype=(
             'application/vnd.openxmlformats-officedocument.'
             'spreadsheetml.sheet'
         )
-
     )
 
 
+# ==========================================
+# APAGAR REGISTROS DO HISTÓRICO
+# ==========================================
 
 @app.route("/apagar-historico", methods=["POST"])
 def apagar_historico():
@@ -303,26 +284,18 @@ def apagar_historico():
 
     ids = dados.get("indices", [])
 
-    caminho = os.path.join(
-        "data",
-        "historico.json"
-    )
+    caminho = os.path.join("data", "historico.json")
 
     with open(caminho, "r", encoding="utf-8") as f:
-
         historico = json.load(f)
 
     # Remove apenas os IDs selecionados
     historico = [
-
         item for item in historico
-
         if item.get("id") not in ids
-
     ]
 
     with open(caminho, "w", encoding="utf-8") as f:
-
         json.dump(
             historico,
             f,
@@ -330,44 +303,12 @@ def apagar_historico():
             indent=4
         )
 
-    return jsonify({
-        "success": True
-    })
+    return jsonify({"success": True})
 
-    dados = request.get_json()
 
-    cnpjs = dados.get("indices", [])
+# ==========================================
+# EXECUTA APLICAÇÃO
+# ==========================================
 
-    caminho = os.path.join(
-        "data",
-        "historico.json"
-    )
-
-    with open(caminho, "r", encoding="utf-8") as f:
-
-        historico = json.load(f)
-
-    # Remove os registros selecionados
-    historico = [
-
-        item for item in historico
-
-        if item.get("cnpj") not in cnpjs
-
-    ]
-
-    with open(caminho, "w", encoding="utf-8") as f:
-
-        json.dump(
-            historico,
-            f,
-            ensure_ascii=False,
-            indent=4
-        )
-
-    return jsonify({
-        "success": True
-    })
-# Executa aplicação
 if __name__ == '__main__':
-    app.run(debug=True) 
+    app.run(debug=True)
