@@ -401,7 +401,6 @@ if (cnpjInput) {
 
 // ===============================
 // FILTRO DO HISTÓRICO
-// ===============================
 
 if (searchInput) {
 
