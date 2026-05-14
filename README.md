@@ -1,6 +1,6 @@
 # 📊 Fornecedor Insight
 
-Sistema em Flask que consulta dados de empresas via API pública (BrasilAPI), calcula nível de risco e armazena histórico em JSON.
+Sistema em Flask que consulta dados de empresas via API pública (BrasilAPI), calcula nível de risco e armazena histórico em JSON. (O sistema está em com deploy no Render, mas por algumas limitações do mesmo algumas funções podem falharem, é recomendado caso aconteça, clonar na máquina pessoal.) 
 
 ---
 
