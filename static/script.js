@@ -9,9 +9,7 @@ const searchInput = document.getElementById("searchInput");
 const riskFilter = document.getElementById("riskFilter");
 
 // Todas as linhas do histórico
-function getRows() {
-    return document.querySelectorAll("#historyTable tbody tr");
-}
+const rows = document.querySelectorAll("#historyTable tbody tr");
 
 
 // ===============================
@@ -303,119 +301,85 @@ function apagarSelecionados() {
 // BOTÃO CONSULTAR / FECHAR DINÂMICO
 // ===============================
 
-// Campo CNPJ
-const cnpjInput = document.querySelector(
-    'input[name="cnpj"]'
-);
+const cnpjInput = document.querySelector('input[name="cnpj"]');
+const consultarBtn = document.getElementById("consultarBtn");
 
-// Botão principal
-const consultarBtn = document.getElementById(
-    "consultarBtn"
-);
+function fecharResultados() {
+    // Remove card empresa
+    const resultado = document.getElementById("empresaResultado");
+    if (resultado) resultado.remove();
 
-// Resultado aberto
-const empresaResultado = document.getElementById(
-    "empresaResultado"
-);
-
-// Função para resetar interface
-function resetarConsulta() {
-
-    // Se não existir resultado aberto, ignora
-    if (!empresaResultado) {
-
-        return;
-
-    }
-
-    // Remove card resultado
-    empresaResultado.remove();
-
-    // Remove card de sócios
-    const sociosCard = document.querySelectorAll(
-        ".shadow-custom.mt-4.p-4"
-    );
-
-    sociosCard.forEach(card => {
-
-        // evita apagar histórico
-        if (
-            !card.id ||
-            card.id !== "historySection"
-        ) {
-
-            // se tiver tabela de sócios
-            if (
-                card.innerText.includes("Sócios")
-            ) {
-
-                card.remove();
-
-            }
-
+    // Remove card sócios (qualquer card que contenha "Sócios" e não seja o histórico)
+    document.querySelectorAll(".card.shadow-custom.mt-4.p-4").forEach(card => {
+        if (card.id !== "historySection" && card.innerText.includes("Sócios")) {
+            card.remove();
         }
-
     });
-
-    // Volta botão para CONSULTAR
-    consultarBtn.innerText = "Consultar";
-
-    consultarBtn.classList.remove(
-        "btn-outline-secondary"
-    );
-
-    consultarBtn.classList.add(
-        "btn-primary"
-    );
-
 }
-if (consultarBtn) {
 
-    consultarBtn.addEventListener("click", (e) => {
+function atualizarBotao() {
+    if (!consultarBtn || !cnpjInput) return;
 
-        const empresaResultado = document.getElementById("empresaResultado");
+    const temResultado = !!document.getElementById("empresaResultado");
+    const temTexto = cnpjInput.value.trim().length > 0;
 
-        if (!empresaResultado) return;
-
-        e.preventDefault();
-
-        empresaResultado.remove();
-
+    if (temResultado && temTexto) {
+        // Modo FECHAR
+        consultarBtn.innerText = "Fechar";
+        consultarBtn.type = "button";
+        consultarBtn.classList.remove("btn-primary");
+        consultarBtn.classList.add("btn-outline-secondary");
+    } else {
+        // Modo CONSULTAR
         consultarBtn.innerText = "Consultar";
+        consultarBtn.type = "submit";
         consultarBtn.classList.remove("btn-outline-secondary");
         consultarBtn.classList.add("btn-primary");
+    }
+}
+
+// Clique no botão
+if (consultarBtn) {
+    consultarBtn.addEventListener("click", (e) => {
+        const temResultado = !!document.getElementById("empresaResultado");
+
+        if (temResultado) {
+            // Está em modo FECHAR
+            e.preventDefault();
+            fecharResultados();
+            atualizarBotao();
+        }
+        // Se não tem resultado, deixa o submit acontecer normalmente
     });
 }
-// ===============================
-// DIGITOU NOVO CNPJ
-// ===============================
 
+// Digitou no campo CNPJ
 if (cnpjInput) {
-
-    cnpjInput.addEventListener(
-        "input",
-        resetarConsulta
-    );
-
+    cnpjInput.addEventListener("input", () => {
+        const temResultado = !!document.getElementById("empresaResultado");
+        if (temResultado) {
+            fecharResultados();
+        }
+        atualizarBotao();
+    });
 }
 
 // ===============================
 // FILTRO DO HISTÓRICO
+// ===============================
 
 if (searchInput) {
-
-    searchInput.addEventListener(
-        "input",
-        resetarConsulta
-    );
-
+    searchInput.addEventListener("input", () => {
+        fecharResultados();
+        atualizarBotao();
+        filtrarTabela();
+    });
 }
 
 if (riskFilter) {
-
-    riskFilter.addEventListener(
-        "change",
-        resetarConsulta
-    );
-
+    riskFilter.addEventListener("change", () => {
+        fecharResultados();
+        atualizarBotao();
+        filtrarTabela();
+    });
 }

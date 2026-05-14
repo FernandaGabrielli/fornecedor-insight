@@ -13,19 +13,6 @@
         "link": "https://brasilapi.com.br/api/cnpj/v1/15436940000103"
     },
     {
-        "id": "232b5593-204c-4778-8062-f1b2ff62641d",
-        "data_consulta": "13/05/2026 01:30",
-        "razao_social": "CAIXA ECONOMICA FEDERAL",
-        "cnpj": "00360305000104",
-        "situacao": "ATIVA",
-        "cnae": "Caixas econômicas",
-        "municipio": "BRASILIA",
-        "uf": "DF",
-        "risco": "BAIXO",
-        "fonte": "BrasilAPI",
-        "link": "https://brasilapi.com.br/api/cnpj/v1/00360305000104"
-    },
-    {
         "id": "2a497df2-138d-4ede-bf6a-3fd6ab255603",
         "data_consulta": "13/05/2026 01:31",
         "razao_social": "OPENAI BRAZIL LIMITADA",
@@ -52,19 +39,6 @@
         "link": "https://brasilapi.com.br/api/cnpj/v1/58271413000190"
     },
     {
-        "id": "e9063cd7-e1d2-4d5e-9dbc-4dba1db7aa0c",
-        "data_consulta": "13/05/2026 01:31",
-        "razao_social": "OPENAI BRAZIL LIMITADA",
-        "cnpj": "62531071000178",
-        "situacao": "ATIVA",
-        "cnae": "Portais, provedores de conteúdo e outros serviços de informação na internet",
-        "municipio": "SAO PAULO",
-        "uf": "SP",
-        "risco": "BAIXO",
-        "fonte": "BrasilAPI",
-        "link": "https://brasilapi.com.br/api/cnpj/v1/62531071000178"
-    },
-    {
         "id": "71a407bb-8be3-4ba3-bdb4-47fcbe659a88",
         "data_consulta": "13/05/2026 01:32",
         "razao_social": "ORACLE DO BRASIL SISTEMAS LTDA",
@@ -78,16 +52,29 @@
         "link": "https://brasilapi.com.br/api/cnpj/v1/59456277000176"
     },
     {
-        "id": "3aaa94ab-5ea7-438d-9c1f-04e858183d1b",
-        "data_consulta": "13/05/2026 01:32",
-        "razao_social": "ORACLE DO BRASIL SISTEMAS LTDA",
-        "cnpj": "59456277000176",
+        "id": "f5ef30e8-11c1-4ed6-98f4-69a4c31768ba",
+        "data_consulta": "13/05/2026 23:20",
+        "razao_social": "DECOLAR. COM LTDA.",
+        "cnpj": "03563689000150",
         "situacao": "ATIVA",
-        "cnae": "Suporte técnico, manutenção e outros serviços em tecnologia da informação",
+        "cnae": "Agências de viagens",
+        "municipio": "BARUERI",
+        "uf": "SP",
+        "risco": "BAIXO",
+        "fonte": "BrasilAPI",
+        "link": "https://brasilapi.com.br/api/cnpj/v1/03563689000150"
+    },
+    {
+        "id": "7f3e4207-cc93-47ba-8ee5-d179991ea25a",
+        "data_consulta": "13/05/2026 23:21",
+        "razao_social": "NOTCO BRASIL DISTRIBUICAO E COMERCIO DE PRODUTOS ALIMENTICIOS LTDA.",
+        "cnpj": "33119545000170",
+        "situacao": "ATIVA",
+        "cnae": "Comércio atacadista especializado em outros produtos alimentícios não especificados anteriormente",
         "municipio": "SAO PAULO",
         "uf": "SP",
         "risco": "BAIXO",
         "fonte": "BrasilAPI",
-        "link": "https://brasilapi.com.br/api/cnpj/v1/59456277000176"
+        "link": "https://brasilapi.com.br/api/cnpj/v1/33119545000170"
     }
 ]
